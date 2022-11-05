@@ -1,0 +1,28 @@
+﻿
+@model ReportesUdec.Models.ViewModels.NuevaContraseña
+@{
+    ViewBag.Title = "Recuperacion";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<h2>Recuperación</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-style">
+            <form action="@Url.Content("~/Acceso/Recuperacion")" method="post">
+                @Html.HiddenFor(d => d.token)
+                <label>Escriba su nueva contraseña</label>
+                @Html.PasswordFor(d => d.Contraseña1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Contraseña1, null, new { style = "color:red;" })
+
+                <label>Confirme su nueva contraseña</label>
+                @Html.PasswordFor(d => d.Contraseña2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Contraseña2, null, new { style = "color:red;" })          
+                <div>
+                    <button class="btn btn-success">Recuperar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

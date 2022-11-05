@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ReportesUdec.Models.Reporte>
+
+@{
+    ViewBag.Title = "AdministradorVerReportes";
+}
+<style>
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reporte_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ruta_Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evento_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zona_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lugar_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ambiente_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reporte_Id)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem=>item.Ruta_Imagen)" width="100px" height="50px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evento_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zona_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lugar_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ambiente_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+        </tr>
+    }
+</table>
+

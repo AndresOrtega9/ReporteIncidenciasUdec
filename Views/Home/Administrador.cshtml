@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Administrador";
+}
+
+<h2>Administrador</h2>
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#tab1">Ver personal</a></li>
+    <li><a data-toggle="tab" href="#tab2">Agregar personal</a></li>
+    <li><a data-toggle="tab" href="#tab3">Ver reportes</a></li>
+</ul>
+<div class="tab-content">
+    <div id="tab1" class="tab-pane fade in">@Html.Action("AdministradorVerPersonal")</div>
+    <div id="tab2" class="tab-pane fade in ">@Html.Action("AdministradorAgregarPersonal")</div>
+    <div id="tab3" class="tab-pane fade in ">@Html.Action("AdministradorVerReportes")</div>
+</div>

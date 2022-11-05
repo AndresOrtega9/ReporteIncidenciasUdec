@@ -1,0 +1,93 @@
+﻿@using ReportesUdec.Traducciones
+@model ReportesUdec.Models.Reporte
+@{
+    ViewBag.Title = "CargarReporte";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    var ListaZona = ViewBag.ListaZona as List<SelectListItem>;
+    var ListaEvento = ViewBag.ListaEvento as List<SelectListItem>;
+
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+        $(document).ready(function () {
+
+            $("#btnEnviar").click(function () {
+                document.getElementById("Loading").style.display = "initial";
+                document.getElementById("Data").style.display = "none";
+                var form_data = new FormData(document.getElementById("form1"));
+                form_data.append("label", "WEBUPLOAD");
+
+                $.ajax({
+                    url: "CrearReporte",
+                    type: "POST",
+                    data: form_data,
+                    processData: false,  // tell jQuery not to process the data
+                    contentType: false   // tell jQuery not to set contentType
+                }).done(function (data) {
+                    console.log(data);
+                    $('#form1')[0].reset();
+                    alert(data);
+                    document.getElementById("Loading").style.display = "none";
+                    document.getElementById("Data").style.display = "initial";
+                });
+            });
+        });
+</script>
+
+@using (Html.BeginForm("CrearReporte", "Acceso", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form id="form1" method="post">
+        <div class="row">
+            <div class="col-md-2">
+                <br />
+                <div class="form-group">
+                    <label>@textos.Evento</label>
+                    @Html.DropDownList("ddlEvento", ViewBag.ListaEvento as List<SelectListItem>, new { @class = "form-control", id = "ddlEvento" })
+                </div>
+                <div class="form-group">
+                    <label>@textos.Tipo</label>
+                    <select id="tipo" name="tipo" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label>@textos.Zona</label>
+                    @Html.DropDownList("ddlZona", ViewBag.listaZona as List<SelectListItem>, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label>@textos.Descripción</label>
+                    @Html.EditorFor(m => m.Descripcion, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                </div>
+
+                <div class="form-group">
+                    <button name="btnEnviar" id="btnEnviar" type="submit" class="btn btn-success">@textos.Crear</button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    var cboTipo = document.getElementById("ddlEvento");
+    cboTipo.addEventListener("change", Refresh);
+    Refresh();
+    function Refresh() {
+        fetch("@Url.Content("~/Acceso/Tipo")" + "?IdEvento=" + cboTipo.value)
+            .then(function (result) {
+                if (result.ok) {
+                    return result.json();
+                }
+            })
+            .then(function (data) {
+                console.log(data);
+                cbo = document.getElementById("tipo");
+                cbo.innerHTML = "";
+                data.forEach(function (element) {
+                    let option = document.createElement("option");
+                    option.appendChild(document.createTextNode(element.Text));
+                    option.value = element.Value;
+                    cbo.appendChild(option);
+                })
+            })
+    }
+</script>

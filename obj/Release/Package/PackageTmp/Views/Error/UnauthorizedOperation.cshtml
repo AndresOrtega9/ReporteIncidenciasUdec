@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "UnauthorizedOperation";
+}
+<section class="content-header">
+    <h1 style="color:red">
+        Usted no tiene acceso a este Módulo
+    </h1>
+</section>
+
+<section class="content">
+    <div class="error-page">
+        <div class="error-content">
+            @if (ViewBag.Modulo != "")
+            {
+                <h2>Módulo: @ViewBag.Modulo</h2>
+
+            }
+            @if (ViewBag.Operacion != "")
+            {
+                <h3>Operación: @ViewBag.Operacion</h3>
+
+            }@if (ViewBag.msjErrorExcepcion != "")
+            {
+                <p>@ViewBag.msjErrorExcepcion</p>
+            }
+        </div>
+    </div>
+</section>
+

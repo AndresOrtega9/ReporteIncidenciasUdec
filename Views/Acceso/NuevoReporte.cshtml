@@ -1,0 +1,83 @@
+﻿@model ReportesUdec.Models.Reporte
+@using ReportesUdec.Traducciones
+@{
+    ViewBag.Title = "NuevoReporte";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class=" form-group">
+        <h4>@textos.Reporte</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Ruta_Imagen, textos.Evidencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input accept="image/jpeg" type="file" name="ImageFile" id="ImageFile" required />              
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Evento_Id, textos.Evento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" name="ddlEvento" id="ddlEvento">
+                    <option value="1">Aseo</option>
+                    <option value="2">Reparación</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Evento_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Tipo_Id, textos.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" name="ddlTipo" id="ddlTipo">
+                    <option value="1">Área general</option>
+                    <option value="2">Baños</option>
+                    <option value="3">Salones</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Tipo_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Zona_Id, textos.Zona, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" name="ddlZona" id="ddlZona">
+                    <option value="1">Administrativo</option>
+                    <option value="2">Bloque A</option>
+                    <option value="3">Bloque B</option>
+                    <option value="3">Canchas deportivas</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Zona_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Descripcion, textos.Descripción, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="Descripcion" id="Descripcion" rows="5" cols="40"></textarea>
+
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="crearR" type="submit" value="@textos.Crear" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+    <div class="form-group row">
+        <div class="col-md-10">
+            @Html.ActionLink("Volver", "Login", new { @class = "btn btn-success" })
+        </div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

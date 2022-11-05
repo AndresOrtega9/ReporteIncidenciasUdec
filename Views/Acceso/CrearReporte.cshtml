@@ -1,0 +1,90 @@
+﻿@model ReportesUdec.Models.Reporte
+@using ReportesUdec.Traducciones
+@{
+    ViewBag.Title = "CrearReporte";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#btnEnviar").click(function () {
+            document.getElementById("Loading").style.display = "initial";
+            document.getElementById("Data").style.display = "none";
+            var form_data = new FormData(document.getElementById("form1"));
+            form_data.append("label", "WEBUPLOAD");
+
+            $.ajax({
+                url: "GuardarReporte",
+                type: "POST",
+                data: form_data,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false   // tell jQuery not to set contentType
+            }).done(function (data) {
+                console.log(data);
+                $('#form1')[0].reset();
+                alert(data);
+                document.getElementById("Loading").style.display = "none";
+                document.getElementById("Data").style.display = "initial";
+            });
+        });
+    });
+</script>
+@using (Html.BeginForm("GuardarReporte", "Acceso", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form id="form1" method="post">
+        <div id="Loading">
+            <img src="~/Content/ok.gif" />
+        </div>
+        <div id="Data">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Ruta_Imagen, textos.Evidencia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    <input class="form-control" accept="image/jpeg" type="file" name="ImageFile" id="ImageFile" required />
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2" id="lblEvento">@textos.Evento</label>
+                <select class="form-control form-group-lg" name="txtEvento" id="txtEvento"></select>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2" id="lblTipo">@textos.Tipo</label>
+                <select class="form-control form-group-lg" name="txtTipo" id="txtTipo"></select>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">@textos.Zona</label>
+                <select class="form-control form-group-lg" name="txtZona" id="txtZona"></select>
+            </div>
+         
+
+            <div class="form-group row">
+                <label class="col-sm-2">@textos.Descripción</label>
+                <input class="form-control" type="text" required="required" name="txtDescripcion" id="txtDescripcion" />
+
+            </div>
+
+            <div class="form-group">
+                <button name="btnEnviar" id="btnEnviar" type="submit" class="btn btn-success">@textos.Crear</button>
+            </div>
+        </div>
+    </form>
+}
+<script>
+    document.getElementById("Loading").style.display = "none";
+    function EventoTipo() {
+        $("#txtEvento").find("option").remove();
+        $.get("LLenarEvento", function (data) {
+            $.each($.parseJSON(data), function (index, row) {
+                $("#txtEvento").append('<option value="' + row.Evento_Id + '">' + row.Evento_Nombre + '</option>')
+            });
+        });
+    }
+    EventoTipo();
+</script>

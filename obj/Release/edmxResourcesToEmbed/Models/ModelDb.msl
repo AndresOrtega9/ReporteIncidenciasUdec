@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UdCReportModelStoreContainer" CdmEntityContainer="UdCReportEntities">
+    <EntitySetMapping Name="Ambiente">
+      <EntityTypeMapping TypeName="UdCReportModel.Ambiente">
+        <MappingFragment StoreEntitySet="Ambiente">
+          <ScalarProperty Name="Ambiente_Id" ColumnName="Ambiente_Id" />
+          <ScalarProperty Name="Ambiente_Nombre" ColumnName="Ambiente_Nombre" />
+          <ScalarProperty Name="idLugar" ColumnName="idLugar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evento">
+      <EntityTypeMapping TypeName="UdCReportModel.Evento">
+        <MappingFragment StoreEntitySet="Evento">
+          <ScalarProperty Name="Evento_Id" ColumnName="Evento_Id" />
+          <ScalarProperty Name="Evento_Nombre" ColumnName="Evento_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugar">
+      <EntityTypeMapping TypeName="UdCReportModel.Lugar">
+        <MappingFragment StoreEntitySet="Lugar">
+          <ScalarProperty Name="Lugar_Id" ColumnName="Lugar_Id" />
+          <ScalarProperty Name="Lugar_Nombre" ColumnName="Lugar_Nombre" />
+          <ScalarProperty Name="idZona" ColumnName="idZona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="UdCReportModel.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="Modulo_Id" ColumnName="Modulo_Id" />
+          <ScalarProperty Name="Modulo_Nombre" ColumnName="Modulo_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operaciones">
+      <EntityTypeMapping TypeName="UdCReportModel.Operaciones">
+        <MappingFragment StoreEntitySet="Operaciones">
+          <ScalarProperty Name="Operaciones_Id" ColumnName="Operaciones_Id" />
+          <ScalarProperty Name="Operaciones_Nombre" ColumnName="Operaciones_Nombre" />
+          <ScalarProperty Name="Modulo_Id" ColumnName="Modulo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reporte">
+      <EntityTypeMapping TypeName="UdCReportModel.Reporte">
+        <MappingFragment StoreEntitySet="Reporte">
+          <ScalarProperty Name="Reporte_Id" ColumnName="Reporte_Id" />
+          <ScalarProperty Name="Ruta_Imagen" ColumnName="Ruta_Imagen" />
+          <ScalarProperty Name="Evento_Id" ColumnName="Evento_Id" />
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Zona_Id" ColumnName="Zona_Id" />
+          <ScalarProperty Name="Lugar_Id" ColumnName="Lugar_Id" />
+          <ScalarProperty Name="Ambiente_Id" ColumnName="Ambiente_Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="UdCReportModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Rol_Nombre" ColumnName="Rol_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_Operacion">
+      <EntityTypeMapping TypeName="UdCReportModel.Rol_Operacion">
+        <MappingFragment StoreEntitySet="Rol_Operacion">
+          <ScalarProperty Name="R_Operacion_Id" ColumnName="R_Operacion_Id" />
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Operacion_Id" ColumnName="Operacion_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo">
+      <EntityTypeMapping TypeName="UdCReportModel.Tipo">
+        <MappingFragment StoreEntitySet="Tipo">
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Tipo_Nombre" ColumnName="Tipo_Nombre" />
+          <ScalarProperty Name="idEvento" ColumnName="idEvento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="UdCReportModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zona">
+      <EntityTypeMapping TypeName="UdCReportModel.Zona">
+        <MappingFragment StoreEntitySet="Zona">
+          <ScalarProperty Name="Zona_Id" ColumnName="Zona_Id" />
+          <ScalarProperty Name="Zona_Nombre" ColumnName="Zona_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CargosPersonal">
+      <EntityTypeMapping TypeName="UdCReportModel.CargosPersonal">
+        <MappingFragment StoreEntitySet="CargosPersonal">
+          <ScalarProperty Name="Nombre_Cargo" ColumnName="Nombre_Cargo" />
+          <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

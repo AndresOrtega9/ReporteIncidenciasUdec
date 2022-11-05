@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "PersonalAseo";
+}
+
+<h2>Personal Aseo</h2>
+@using (Html.BeginForm())
+{
+    
+
+    <ul class="nav nav-tabs">
+        <li><a data-toggle="tab" href="#tab1">Ver reportes</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in">@Html.Action("PersonalAseoVerReportes")</div>
+    </div>
+}
+

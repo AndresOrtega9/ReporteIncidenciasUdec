@@ -1,0 +1,25 @@
+﻿@model ReportesUdec.Models.ViewModels.RecuperarModel
+@{
+    ViewBag.Title = "InicioRecuperacion";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2>Inicio recuperación</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-style">
+            <form action="@Url.Content("~/Acceso/InicioRecuperacion")" method="post">
+                <label>Escriba su correo electrónico:</label>
+                @Html.TextBoxFor(d => d.Correo, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Correo, null, new { style = "color:red;" })
+                <br />
+                <br />
+                <div>
+                    <button class="btn btn-success">Recuperar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
