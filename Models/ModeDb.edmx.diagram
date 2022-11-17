@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a19f34fac46b4d23b71f3d4163dd2129" Name="Diagram1">
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Ambiente" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.CargosPersonal" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Evento" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Lugar" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Modulo" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Operaciones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Reporte" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Rol" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Rol_Operacion" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Tipo" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Usuario" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReportesUdec_dbModel.Zona" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="ReportesUdec_dbModel.FK_Operaciones_Modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportesUdec_dbModel.FK_Rol_Operacion_Operaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportesUdec_dbModel.FK_Rol_Operacion_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="ReportesUdec_dbModel.FK_Usuario_Rol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

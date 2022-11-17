@@ -35,26 +35,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Reporte_Id)
+            @Html.DisplayName("#")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ruta_Imagen)
+            @Html.DisplayName("Imagen")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Evento_Id)
+            @Html.DisplayName("Evento")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tipo_Id)
+            @Html.DisplayName("Tipo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zona_Id)
+            @Html.DisplayName("Zona")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lugar_Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ambiente_Id)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
@@ -87,12 +82,6 @@
             @Html.DisplayFor(modelItem => item.Zona_Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Lugar_Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ambiente_Id)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
@@ -102,9 +91,7 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            <a class="btn btn-primary" href="~/Home/Editar/@item.Reporte_Id">Editar</a>
-            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })*@
-            <a class="btn btn-danger" href="~/Home/Editar/@item.Reporte_Id">Eliminar</a>
+            <a class="btn btn-primary" href="~/Home/EditarReportesPersonal/@item.Reporte_Id">Editar</a>
         </td>
     </tr>
 }

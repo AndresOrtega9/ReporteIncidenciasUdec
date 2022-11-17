@@ -21,7 +21,7 @@
     <View_SelectedScaffolderID>MvcViewScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
-    <NameOfLastUsedPublishProfile>UdCReports - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\Escritorio\uc\UdCR\ReportesUdec\Properties\PublishProfiles\UCReport - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextTypeFullName>ReportesUdec.Models.UdCReportEntities</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
   <PropertyGroup>

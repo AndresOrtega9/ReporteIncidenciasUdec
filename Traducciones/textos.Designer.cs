@@ -106,6 +106,15 @@ namespace ReportesUdec.Traducciones {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Editar.
+        /// </summary>
+        public static string Editar {
+            get {
+                return ResourceManager.GetString("Editar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Entrar.
         /// </summary>
         public static string Entrar {

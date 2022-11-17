@@ -11,31 +11,21 @@ namespace ReportesUdec.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Web;
 
     public partial class Reporte
     {
-        [DisplayName("#")]
         public int Reporte_Id { get; set; }
-        [DisplayName("Imagen")]
         public string Ruta_Imagen { get; set; }
-        [DisplayName("Evento")]
         public Nullable<int> Evento_Id { get; set; }
-        [DisplayName("Tipo")]
         public string Tipo_Id { get; set; }
-        [DisplayName("Zona")]
         public string Zona_Id { get; set; }
-        [DisplayName("Lugar")]
         public string Lugar_Id { get; set; }
-        [DisplayName("Ambiente")]
         public string Ambiente_Id { get; set; }
-        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
-        [DisplayName("Fecha")]
         public string Fecha { get; set; }
-        [DisplayName("Estado")]
         public string Estado { get; set; }
+
         public HttpPostedFileBase ImageFile { get; set; }
     }
 }

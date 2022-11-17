@@ -2,15 +2,18 @@
 @using ReportesUdec.Traducciones
 @{
     ViewBag.Title = "EditarUsuariosAdmin";
+    var msj = ViewBag.msj;
 }
 @using (Html.BeginForm("EditarUsuariosAdmin", "Home", FormMethod.Post))
 {
-
-    <hr />
-    <h2>Editar información de usuarios</h2>
     <br />
+    <h4>Editar información de usuarios</h4>
+    <h4 style="color:green">
+        @ViewBag.msj
+    </h4>
+    <hr />
+    @Html.HiddenFor(model => model.Usuario_Id)
     <div class="form-group row">
-        @Html.HiddenFor(d=>d.Usuario_Id)
         @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-2">
             @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", required = "required" } })
@@ -28,18 +31,30 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.Rol_Id, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-sm-2">
-            <select class="form-control" name="ddlRoles" id="ddlRoles  ">
+            <select class="form-control" name="ddlRoles" id="ddlRoles" required>
                 <option value="">--Seleccione--</option>
                 <option value="2">Aseo</option>
-                <option value="3">Reparacion</option>
+                <option value="3">Reparación</option>
             </select>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-2">
-            <input type="submit" value="@textos.Crear" class="btn btn-success" />
+            <input type="submit" value="@textos.Editar" class="btn btn-success" />
         </div>
     </div>
 }
+
+<div class="form-group row">
+    <div class="col-md-10">
+        @Html.ActionLink("Volver", "Administrador", new { @class = "btn btn-success" })
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
 

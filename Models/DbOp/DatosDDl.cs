@@ -10,7 +10,7 @@ namespace ReportesUdec.DbOp
     {
         public string ListaEvento()
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Evento.ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -20,7 +20,7 @@ namespace ReportesUdec.DbOp
 
         public string ListaTipo(int EventoId)
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Tipo.Where(o => o.idEvento == EventoId).ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -28,12 +28,9 @@ namespace ReportesUdec.DbOp
             }
         }
 
-
-
-
         public string ListaZona()
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Zona.ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -43,7 +40,7 @@ namespace ReportesUdec.DbOp
 
         public string ListaLugar(int ZonaId)
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Lugar.Where(o => o.idZona == ZonaId).ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -53,7 +50,7 @@ namespace ReportesUdec.DbOp
 
         public string ListaAmbiente(int LugarId)
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Ambiente.Where(o => o.idLugar == LugarId).ToList();
                 var Json = JsonConvert.SerializeObject(Data);

@@ -19,7 +19,7 @@ namespace ReportesUdec.Controllers
 {
     public class AccesoController : Controller
     {
-       
+
         string urlDominio = "https://localhost:44353/";
         //string urlDominio = "https://reportesudec20221101014254.azurewebsites.net/";
 
@@ -40,7 +40,7 @@ namespace ReportesUdec.Controllers
                     return View(model);
                 }
                 string token = GetSha256(Guid.NewGuid().ToString());
-                using (Models.UdCReportEntities _db = new Models.UdCReportEntities())
+                using (Models.ReportesUdec_dbEntities _db = new Models.ReportesUdec_dbEntities())
                 {
                     var oUser = _db.Usuario.Where(d => d.Correo == model.Correo).FirstOrDefault();
                     if (oUser != null)
@@ -95,7 +95,7 @@ namespace ReportesUdec.Controllers
         {
             Models.ViewModels.NuevaContraseña model = new Models.ViewModels.NuevaContraseña();
             model.token = token;
-            using (Models.UdCReportEntities _db = new Models.UdCReportEntities())
+            using (Models.ReportesUdec_dbEntities _db = new Models.ReportesUdec_dbEntities())
             {
                 if (model.token == null || model.token.Trim().Equals(""))
                 {
@@ -121,7 +121,7 @@ namespace ReportesUdec.Controllers
                     return View(model);
                 }
 
-                using (Models.UdCReportEntities _db = new Models.UdCReportEntities())
+                using (Models.ReportesUdec_dbEntities _db = new Models.ReportesUdec_dbEntities())
                 {
                     var oUser = _db.Usuario.Where(d => d.Token == model.token).First();
 
@@ -145,9 +145,9 @@ namespace ReportesUdec.Controllers
 
         public ActionResult Login()
         {
-           
+
             return View();
-           
+
         }
 
         [HttpPost]
@@ -155,7 +155,7 @@ namespace ReportesUdec.Controllers
         {
             try
             {
-                using (Models.UdCReportEntities _db = new Models.UdCReportEntities())
+                using (Models.ReportesUdec_dbEntities _db = new Models.ReportesUdec_dbEntities())
                 {
                     var oUser = (from d in _db.Usuario
                                  where d.Correo == user.Trim() && d.Contraseña == pass.Trim()
@@ -178,14 +178,10 @@ namespace ReportesUdec.Controllers
 
 
         MngReporte mngRep = new MngReporte();
-
-
         public ActionResult CrearReporte()
         {
             return View();
         }
-
-
         [HttpPost]
         public void GuardarReporte(FormCollection Form, Reporte rpt)
         {
@@ -196,7 +192,7 @@ namespace ReportesUdec.Controllers
             //filename = Path.Combine(Server.MapPath("../Imagenes/"), filename);
             //rpt.ImageFile.SaveAs(filename);
 
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {
 
                 var DateAndTime = DateTime.Now;
@@ -215,159 +211,19 @@ namespace ReportesUdec.Controllers
                 };
                 mngRep.GuardarReporte(rm);
                 Response.Redirect("CrearReporte");
-
             }
-
         }
 
         DatosDDl datos = new DatosDDl();
-
-
         public string LLenarEvento()
         {
             return datos.ListaEvento();
         }
 
-        //public string LlenarTipo(int EventoId)
-        //{
-        //    return datos.ListaTipo(EventoId);
-        //}
-
-        //public string LLenarZona()
-        //{
-        //    return datos.ListaZona();
-        //}
-
-        //public string LlenarLugar(int ZonaId)
-        //{
-        //    return datos.ListaLugar(ZonaId);
-        //}
-
-        //public string LlenarAmbiente(int LugarId)
-        //{
-        //    return datos.ListaAmbiente(LugarId);
-        //}
-
-        // GET: CargarReporte
-        public ActionResult CargarReporte()
+        public string LlenarTipo(int EventoId)
         {
-            //List<SelectListItem> ListaEvento = new List<SelectListItem>();
+            return datos.ListaTipo(EventoId);
 
-            //using (Models.UdCReportEntities db = new Models.UdCReportEntities())
-            //{
-            //    ListaEvento = (from d in db.Evento
-            //             select new SelectListItem
-            //             {
-            //                 Value = d.Evento_Id.ToString(),
-            //                 Text = d.Evento_Nombre
-            //             }).ToList();
-            //}
-
-            //List<SelectListItem> ListaZona = new List<SelectListItem>();
-            //using (Models.UdCReportEntities db = new Models.UdCReportEntities())
-            //{
-            //    ListaZona = (from d in db.Zona
-            //             select new SelectListItem
-            //             {
-            //                 Value = d.Zona_Id.ToString(),
-            //                 Text = d.Zona_Nombre
-            //             }).ToList();
-            //}
-
-            //ViewBag.ListaEvento = ListaEvento;
-            //ViewBag.ListaZona = ListaZona;
-            return View();
-        }
-
-
-        public ActionResult ind()
-        {
-            List<SelectListItem> ListaEvento = new List<SelectListItem>();
-
-            using (Models.UdCReportEntities db = new Models.UdCReportEntities())
-            {
-                ListaEvento = (from d in db.Evento
-                               select new SelectListItem
-                               {
-                                   Value = d.Evento_Id.ToString(),
-                                   Text = d.Evento_Nombre
-                               }).ToList();
-            }
-
-            List<SelectListItem> ListaZona = new List<SelectListItem>();
-            using (Models.UdCReportEntities db = new Models.UdCReportEntities())
-            {
-                ListaZona = (from d in db.Zona
-                             select new SelectListItem
-                             {
-                                 Value = d.Zona_Id.ToString(),
-                                 Text = d.Zona_Nombre
-                             }).ToList();
-            }
-
-            ViewBag.ListaEvento = ListaEvento;
-            ViewBag.ListaZona = ListaZona;
-            return View();
-        }
-
-
-
-        [HttpGet]
-        public JsonResult Tipo(int IdEvento)
-        {
-            List<ElementoJson> lista = new List<ElementoJson>();
-            using (Models.UdCReportEntities db = new UdCReportEntities())
-            {
-                lista = (from d in db.Tipo
-                         where d.idEvento == IdEvento
-                         select new ElementoJson
-                         {
-                             Value = d.Tipo_Id,
-                             Text = d.Tipo_Nombre
-                         }).ToList();
-            }
-            return Json(lista, JsonRequestBehavior.AllowGet);
-        }
-
-        public class ElementoJson
-        {
-            public int Value { get; set; }
-            public string Text { get; set; }
-
-        }
-
-        //SIN DDL
-        public ActionResult NuevoReporte()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public void CargarNuevoReporte(Reporte model, FormCollection Form)
-        {
-          
-                    using (var _db = new UdCReportEntities())
-                    {
-                        var DateAndTime = DateTime.Now;
-                        var fecha = DateAndTime.Date.ToString("yyyy-MM-dd");
-
-                        Reporte rm = new Reporte()
-                        {
-                            Ruta_Imagen = Form["ImageFile"],
-                            Evento_Id = model.Evento_Id,
-                            Tipo_Id = model.Tipo_Id,
-                            Zona_Id = model.Zona_Id,
-                            Descripcion = model.Descripcion,
-                            Fecha = fecha,
-                            Estado = "Activo"                          
-                        };
-
-                        mngRep.CargarNuevoReporte(rm);
-                        Response.Write("Reporte creado con éxito");
-                
-    
-                        
-            }
         }
     }
 }

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReportesUdec_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ambiente">
+    <Key>
+      <PropertyRef Name="Ambiente_Id" />
+    </Key>
+    <Property Name="Ambiente_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ambiente_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idLugar" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CargosPersonal">
+    <Key>
+      <PropertyRef Name="Id_Cargo" />
+    </Key>
+    <Property Name="Id_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="Evento_Id" />
+    </Key>
+    <Property Name="Evento_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Evento_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="Lugar_Id" />
+    </Key>
+    <Property Name="Lugar_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lugar_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idZona" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="Modulo_Id" />
+    </Key>
+    <Property Name="Modulo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Modulo_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operaciones" Relationship="Self.FK_Operaciones_Modulo" FromRole="Modulo" ToRole="Operaciones" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="Operaciones_Id" />
+    </Key>
+    <Property Name="Operaciones_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Operaciones_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modulo_Id" Type="Int32" />
+    <NavigationProperty Name="Modulo" Relationship="Self.FK_Operaciones_Modulo" FromRole="Operaciones" ToRole="Modulo" />
+    <NavigationProperty Name="Rol_Operacion" Relationship="Self.FK_Rol_Operacion_Operaciones" FromRole="Operaciones" ToRole="Rol_Operacion" />
+  </EntityType>
+  <EntityType Name="Reporte">
+    <Key>
+      <PropertyRef Name="Reporte_Id" />
+    </Key>
+    <Property Name="Reporte_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ruta_Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Evento_Id" Type="Int32" />
+    <Property Name="Tipo_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zona_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lugar_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ambiente_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rol_Operacion" Relationship="Self.FK_Rol_Operacion_Rol" FromRole="Rol" ToRole="Rol_Operacion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Rol_Operacion">
+    <Key>
+      <PropertyRef Name="R_Operacion_Id" />
+    </Key>
+    <Property Name="R_Operacion_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol_Id" Type="Int32" />
+    <Property Name="Operacion_Id" Type="Int32" />
+    <NavigationProperty Name="Operaciones" Relationship="Self.FK_Rol_Operacion_Operaciones" FromRole="Rol_Operacion" ToRole="Operaciones" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_Rol_Operacion_Rol" FromRole="Rol_Operacion" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="Tipo_Id" />
+    </Key>
+    <Property Name="Tipo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idEvento" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Usuario_Id" />
+    </Key>
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rol_Id" Type="Int32" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Zona">
+    <Key>
+      <PropertyRef Name="Zona_Id" />
+    </Key>
+    <Property Name="Zona_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Zona_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Operaciones_Modulo">
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="0..1" />
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="Modulo_Id" />
+      </Principal>
+      <Dependent Role="Operaciones">
+        <PropertyRef Name="Modulo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Operacion_Operaciones">
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="0..1" />
+    <End Role="Rol_Operacion" Type="Self.Rol_Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operaciones">
+        <PropertyRef Name="Operaciones_Id" />
+      </Principal>
+      <Dependent Role="Rol_Operacion">
+        <PropertyRef Name="Operacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Operacion_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Rol_Operacion" Type="Self.Rol_Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="Rol_Operacion">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ReportesUdec_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ambiente" EntityType="Self.Ambiente" />
+    <EntitySet Name="CargosPersonal" EntityType="Self.CargosPersonal" />
+    <EntitySet Name="Evento" EntityType="Self.Evento" />
+    <EntitySet Name="Lugar" EntityType="Self.Lugar" />
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+    <EntitySet Name="Operaciones" EntityType="Self.Operaciones" />
+    <EntitySet Name="Reporte" EntityType="Self.Reporte" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Rol_Operacion" EntityType="Self.Rol_Operacion" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Zona" EntityType="Self.Zona" />
+    <AssociationSet Name="FK_Operaciones_Modulo" Association="Self.FK_Operaciones_Modulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Operaciones" EntitySet="Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Operacion_Operaciones" Association="Self.FK_Rol_Operacion_Operaciones">
+      <End Role="Operaciones" EntitySet="Operaciones" />
+      <End Role="Rol_Operacion" EntitySet="Rol_Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Operacion_Rol" Association="Self.FK_Rol_Operacion_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Rol_Operacion" EntitySet="Rol_Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

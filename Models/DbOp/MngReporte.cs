@@ -20,7 +20,7 @@ namespace ReportesUdec.DbOp
         public void GuardarReporte(Reporte repMod)
         {
            
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {             
                 Reporte r = new Reporte()
                 {
@@ -42,7 +42,7 @@ namespace ReportesUdec.DbOp
         public void Nuevo(Usuario user)
         {
 
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {
                 Usuario u = new Usuario()
                 {
@@ -56,33 +56,12 @@ namespace ReportesUdec.DbOp
                 _db.SaveChanges();
             }         
         }
-
-        //SIN DDL
-        public void CargarNuevoReporte(Reporte rep)
-        {
-
-            using (var _db = new UdCReportEntities())
-            {
-                Reporte r = new Reporte()
-                {
-                    Ruta_Imagen= rep.Ruta_Imagen,
-                    Evento_Id=rep.Evento_Id,
-                    Tipo_Id=rep.Tipo_Id,
-                    Zona_Id=rep.Zona_Id,
-                    Descripcion=rep.Descripcion,
-                    Fecha=rep.Fecha,
-                    Estado=rep.Estado,
-                    
-                };
-                _db.Reporte.Add(r);
-                _db.SaveChanges();
-            }
-        }
+  
 
         public string ListaDeDaños()
         {
 
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {
                 var Data = _db.Reporte.ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -93,7 +72,7 @@ namespace ReportesUdec.DbOp
         public string ListaDeReportesAdm()
         {
 
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {
                 var Data = _db.Reporte.ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -104,7 +83,7 @@ namespace ReportesUdec.DbOp
         public string ListaDeAseo()
         {
 
-            using (var _db = new UdCReportEntities())
+            using (var _db = new ReportesUdec_dbEntities())
             {
                 var Data = _db.Reporte.ToList();
                 var Json = JsonConvert.SerializeObject(Data);
@@ -114,7 +93,7 @@ namespace ReportesUdec.DbOp
 
         public void EliminarRep(int Id)
         {
-            using (var db = new UdCReportEntities())
+            using (var db = new ReportesUdec_dbEntities())
             {
                 var Data = db.Usuario.Find(Id);
                 if (Data!=null)

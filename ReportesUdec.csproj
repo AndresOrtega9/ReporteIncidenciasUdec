@@ -55,6 +55,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
@@ -152,63 +158,61 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ambiente.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CargosPersonal.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbOp\DatosDDl.cs" />
     <Compile Include="Models\DbOp\MngReporte.cs" />
     <Compile Include="Models\Evento.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventoTipo.cs" />
     <Compile Include="Models\Lugar.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelDb.Context.cs">
+    <Compile Include="Models\ModeDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDb.Context.tt</DependentUpon>
+      <DependentUpon>ModeDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelDb.cs">
+    <Compile Include="Models\ModeDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelDb.Designer.cs">
+    <Compile Include="Models\ModeDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDb.edmx</DependentUpon>
+      <DependentUpon>ModeDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Modulo.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Operaciones.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reporte.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol_Operacion.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModels\EditarAdm.cs" />
     <Compile Include="Models\ViewModels\GuardarUsuariosAdm.cs" />
     <Compile Include="Models\ViewModels\ListaUsuariosAdmin.cs" />
     <Compile Include="Models\ViewModels\NuevaContraseña.cs" />
     <Compile Include="Models\ViewModels\RecuperarModel.cs" />
     <Compile Include="Models\Zona.cs">
-      <DependentUpon>ModelDb.tt</DependentUpon>
+      <DependentUpon>ModeDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\CrystalReport2.cs">
@@ -237,15 +241,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModelDb.Context.tt">
+    <Content Include="Models\ModeDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelDb.Context.cs</LastGenOutput>
-      <DependentUpon>ModelDb.edmx</DependentUpon>
+      <DependentUpon>ModeDb.edmx</DependentUpon>
+      <LastGenOutput>ModeDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelDb.tt">
+    <Content Include="Models\ModeDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDb.edmx</DependentUpon>
-      <LastGenOutput>ModelDb.cs</LastGenOutput>
+      <DependentUpon>ModeDb.edmx</DependentUpon>
+      <LastGenOutput>ModeDb.cs</LastGenOutput>
     </Content>
     <Content Include="Readme.txt" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
@@ -254,15 +258,15 @@
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ModelDb.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelDb.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelDb.edmx.diagram">
-      <DependentUpon>ModelDb.edmx</DependentUpon>
-    </Content>
     <Content Include="App_Browsers\qt.browser" />
-    <None Include="Properties\PublishProfiles\UdCReports - Web Deploy.pubxml" />
+    <EntityDeploy Include="Models\ModeDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModeDb.edmx.diagram">
+      <DependentUpon>ModeDb.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\UCReport - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -305,9 +309,8 @@
     <Content Include="Views\Acceso\CrearReporte.cshtml" />
     <Content Include="Views\Home\PersonalReparacionVerReportes.cshtml" />
     <Content Include="Views\Home\EditarUsuariosAdmin.cshtml" />
-    <Content Include="Views\Acceso\CargarReporte.cshtml" />
-    <Content Include="Views\Acceso\NuevoReporte.cshtml" />
     <Content Include="Views\Pruebas\Pruebas.cshtml" />
+    <Content Include="Views\Home\EditarReportesPersonal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

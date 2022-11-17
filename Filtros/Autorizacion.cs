@@ -11,7 +11,7 @@ namespace ReportesUdec.Filtros
     public class Autorizacion : AuthorizeAttribute
     {
         private Usuario oUsuario;
-        private UdCReportEntities _db = new UdCReportEntities();
+        private ReportesUdec_dbEntities _db = new ReportesUdec_dbEntities();
         private int idOperacion;
 
         public Autorizacion(int idOperacion = 0)

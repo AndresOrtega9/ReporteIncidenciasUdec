@@ -11,26 +11,20 @@ namespace ReportesUdec.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
+    using System.ComponentModel;
 
     public partial class Usuario
     {
-        [Display(Name = "#")]
+       
         public int Usuario_Id { get; set; }
-        [Display(Name = "Nombre de usuario")]
+       
         public string Nombre { get; set; }
-        [Display(Name = "Correo electrónico")]
         public string Correo { get; set; }
-        [Display(Name = "Contraseña")]
         public string Contraseña { get; set; }
-        [Display(Name = "Fecha de registro")]
         public string Fecha { get; set; }
-        [Display(Name = "Ocupación")]
         public Nullable<int> Rol_Id { get; set; }
         public string Token { get; set; }
     
-        //public virtual Rol Rol { get; set; }
-        public IEnumerable<SelectListItem> Rol { get; set; }
+        public virtual Rol Rol { get; set; }
     }
 }

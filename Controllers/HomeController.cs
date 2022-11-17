@@ -23,13 +23,13 @@ namespace ReportesUdec.Controllers
             return View();
         }
 
-        //[Autorizacion(idOperacion: 1)]
+        [Autorizacion(idOperacion: 1)]
         public ActionResult Administrador()
         {
             return View();
         }
 
-        //[Autorizacion(idOperacion: 2)]
+        [Autorizacion(idOperacion: 2)]
         public ActionResult PersonalAseo()
         {
             return View();
@@ -37,13 +37,13 @@ namespace ReportesUdec.Controllers
 
         public ActionResult PersonalAseoVerReportes()
         {
-            using (UdCReportEntities model = new UdCReportEntities())
+            using (ReportesUdec_dbEntities model = new ReportesUdec_dbEntities())
             {
                 return View(model.Reporte.ToList());
             }
 
         }
-        //[Autorizacion(idOperacion: 3)]
+        [Autorizacion(idOperacion: 3)]
         public ActionResult PersonalReparacion()
         {
             return View();
@@ -51,7 +51,7 @@ namespace ReportesUdec.Controllers
 
         public ActionResult PersonalReparacionVerReportes()
         {
-            using (UdCReportEntities model = new UdCReportEntities())
+            using (ReportesUdec_dbEntities model = new ReportesUdec_dbEntities())
             {
                 return View(model.Reporte.ToList());
             }
@@ -74,41 +74,23 @@ namespace ReportesUdec.Controllers
 
         public ActionResult AdministradorVerPersonal()
         {
-            using (UdCReportEntities model = new UdCReportEntities())
+            using (ReportesUdec_dbEntities model = new ReportesUdec_dbEntities())
             {
                 return View(model.Usuario.ToList());
             }
-
-            //List<ListaUsuariosAdmin> lst;
-            //using (UdCReportEntities db = new UdCReportEntities())
-            //{
-            //    lst = (from d in db.Usuario
-            //           select new ListaUsuariosAdmin
-            //           {
-            //               Usuario_Id = d.Usuario_Id,
-            //               Fecha = d.Fecha,
-            //               Rol_Id = d.Rol_Id,
-            //               Nombre = d.Nombre,
-            //               Correo = d.Correo
-            //           }).ToList();
-            //}
-            //return View(lst);
         }
 
         public ActionResult AdministradorAgregarPersonal()
         {
-
             return View();
-
         }
 
         public ActionResult AdministradorVerReportes()
         {
-            using (UdCReportEntities model = new UdCReportEntities())
+            using (ReportesUdec_dbEntities model = new ReportesUdec_dbEntities())
             {
                 return View(model.Reporte.ToList());
             }
-
         }
 
         public ActionResult ReporteAdmin()
@@ -116,8 +98,6 @@ namespace ReportesUdec.Controllers
             return new ActionAsPdf("PersonalReparacionVerReportes", new { rpt = "Reporte generado" })
             { FileName = "reporte_administrador.pdf" };
         }
-
-
 
         MngReporte mngRep = new MngReporte();
         DatosDDl datos = new DatosDDl();
@@ -133,7 +113,7 @@ namespace ReportesUdec.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (var _db = new UdCReportEntities())
+                    using (var _db = new ReportesUdec_dbEntities())
                     {
                         var DateAndTime = DateTime.Now;
                         var fecha = DateAndTime.Date.ToString("yyyy-MM-dd");
@@ -171,77 +151,23 @@ namespace ReportesUdec.Controllers
 
         }
 
-        //public ActionResult EditarReportesAdmin(Reporte model, int Reporte_Id)//a
-        //{
-
-        //    using (UdCReportEntities db = new UdCReportEntities())
-        //    {
-        //        var oReportes = db.Reporte.Find(Reporte_Id);
-        //        model.Ruta_Imagen = oReportes.Ruta_Imagen;
-        //        model.Evento_Id = oReportes.Evento_Id;
-        //        model.Tipo_Id = oReportes.Tipo_Id;
-        //        model.Zona_Id = oReportes.Zona_Id;
-        //        model.Lugar_Id = oReportes.Lugar_Id;
-        //        model.Ambiente_Id = oReportes.Ambiente_Id;
-        //        model.Descripcion = oReportes.Descripcion;
-        //        model.Fecha = oReportes.Fecha;
-        //        model.Estado = oReportes.Estado;
-        //        model.Reporte_Id = oReportes.Reporte_Id;
-
-        //    }
-        //    return View(model);
-        //}
-
-        //[HttpPost]
-        //public void EditarReportesAdmin(EditarAdm model, FormCollection Form)
-        //{
-        //    using (var _db = new UdCReportEntities())
-        //    {
-        //        var DateAndTime = DateTime.Now;
-        //        var fecha = DateAndTime.Date.ToString("yyyy-MM-dd"); var oUsuarios = _db.Usuario.Find(model.reporte_Id);
-
-        //        var oReportes = _db.Reporte.Find(model.reporte_Id);
-        //        oReportes.Ruta_Imagen = model.ruta_Imagen;
-        //        oReportes.Evento_Id = model.evento_Id;
-        //        oReportes.Tipo_Id = model.tipo_Id;
-        //        oReportes.Zona_Id = model.zona_Id;
-        //        oReportes.Lugar_Id = model.lugar_Id;
-        //        oReportes.Ambiente_Id = model.ambiente_Id;
-        //        oReportes.Descripcion = model.descripcion;
-        //        oReportes.Fecha = model.fecha;
-        //        oReportes.Estado = model.estado;
-
-
-        //        _db.Entry(oReportes).State = System.Data.Entity.EntityState.Modified;
-        //        _db.SaveChanges();
-        //    }
-
-
-        //}
-
-        public ActionResult EditarUsuariosAdmin(Usuario model, int id, FormCollection Form)//a
+        public ActionResult EditarUsuariosAdmin(Usuario model, int id)
         {
-
-            using (UdCReportEntities db = new UdCReportEntities())
+            using (ReportesUdec_dbEntities db = new ReportesUdec_dbEntities())
             {
                 var oUsuario = db.Usuario.Find(id);
                 model.Nombre = oUsuario.Nombre;
                 model.Correo = oUsuario.Correo;
                 model.Rol_Id =oUsuario.Rol_Id;
                 model.Usuario_Id = oUsuario.Usuario_Id;
-
             }
-            return View(model);
+            return View(model);          
         }
 
         [HttpPost]
-        public void EditarUsuariosAdmin(GuardarUsuariosAdm model, FormCollection Form)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    using (var _db = new UdCReportEntities())
+        public ActionResult EditarUsuariosAdmin(Usuario model, FormCollection Form)
+        {          
+                    using (var _db = new ReportesUdec_dbEntities())
                     {
                         var DateAndTime = DateTime.Now;
                         var fecha = DateAndTime.Date.ToString("yyyy-MM-dd");
@@ -254,18 +180,61 @@ namespace ReportesUdec.Controllers
 
 
                         _db.Entry(oUsuario).State = System.Data.Entity.EntityState.Modified;
-                        _db.SaveChanges();
-                    };
+                        _db.SaveChanges();               
+            };
+            string msj = "!Se han editado datos del usuario!";
+            ViewBag.msj = msj;
+            return View(model);
+        }
 
-
-                }
-
-            }
-            catch (Exception)
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            using (ReportesUdec_dbEntities db = new ReportesUdec_dbEntities())
             {
+                var oUsuario = db.Usuario.Find(id);
+                db.Usuario.Remove(oUsuario);
+                db.SaveChanges();
+            }
+            return Redirect("Administrdor");
+        }
 
-                throw;
-            }   
+        //EDITAR REPORTES
+        public ActionResult EditarReportesPersonal(Reporte model, int id)//a
+        {
+            using (ReportesUdec_dbEntities db = new ReportesUdec_dbEntities())
+            {
+                var oReporte = db.Reporte.Find(id);
+                //model.Ruta_Imagen = oReporte.Ruta_Imagen;
+                model.Estado = oReporte.Estado;
+                model.Reporte_Id = oReporte.Reporte_Id;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditarReportesPersonal(Reporte model)
+        {
+            //string filename = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+            //string ext = Path.GetExtension(model.ImageFile.FileName);
+            //filename = filename + DateTime.Now.ToString("yymmssfff") + ext;
+            //model.Ruta_Imagen = "~/Imagenes/" + filename;
+            //filename = Path.Combine(Server.MapPath("~/Imagenes/"), filename);
+            //model.ImageFile.SaveAs(filename);
+
+            using (var _db = new ReportesUdec_dbEntities())
+            {
+                var oReporte = _db.Reporte.Find(model.Reporte_Id);
+                //oReporte.Ruta_Imagen = model.Ruta_Imagen;
+                oReporte.Estado = "Reparado";
+
+                _db.Entry(oReporte).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+            };
+
+            string msj = "!Se han editado datos del reporte!";
+            ViewBag.msj = msj;
+            return View(model);
         }
     }
 }

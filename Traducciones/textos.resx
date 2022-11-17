@@ -132,6 +132,9 @@
   <data name="Descripción" xml:space="preserve">
     <value>Descripción</value>
   </data>
+  <data name="Editar" xml:space="preserve">
+    <value>Editar</value>
+  </data>
   <data name="Entrar" xml:space="preserve">
     <value>Entrar</value>
   </data>

@@ -35,7 +35,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario_Id)
+            @Html.DisplayName("#")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -50,7 +50,7 @@
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rol_Id)
+            @Html.DisplayName("Ocupación")
         </th>
         <th>
             @Html.DisplayName("Opciones")
@@ -79,9 +79,9 @@
         </td>
         <td>
             <a class="btn btn-primary" href="~/Home/EditarUsuariosAdmin/@item.Usuario_Id">Editar</a>
-            <a class="btn btn-danger" href="~/Home/Editar/@item.Usuario_Id">Eliminar</a>
-            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class="btn btn-primary"})
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })*@
+            @*<a class="btn btn-danger" href="~/Home/Eliminar/@item.Usuario_Id">Eliminar</a>*@
+           
+        @Html.ActionLink("Delete", "Eliminar", new {  id=item.Usuario_Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
